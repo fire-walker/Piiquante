@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb+srv://cha_church:jubzLtCUE972MgC3@cluster0.yywkq0y.mongodb.net/?retryWrites=true&w=majority',
+mongoose.connect('mongodb+srv://cha_church:<PASSWORD>@cluster0.yywkq0y.mongodb.net/?retryWrites=true&w=majority',
     { useNewUrlParser: true,
         useUnifiedTopology: true })
     .then(() => console.log('Connexion à MongoDB réussie !'))
