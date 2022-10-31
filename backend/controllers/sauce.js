@@ -1,13 +1,18 @@
 const Sauce = require("../models/sauce");
 const fs = require('fs');
 
-//Fonction de création d'une sauce
-//Pour obtenir un objet utilisable on effectue un JSON.parse()
-//Suppression de l'id de l'objet car celui-ci est généré automatiquement par notre bdd
-//Suppression de l'userId car nous ne lui faisons pas confiance
-//Création d'un objet sauce
-//Récupération de l'URL complète de l'image
-//Sauvegarde de la sauce
+/**
+* Fonction de création d'une sauce
+* - Pour obtenir un objet utilisable on effectue un JSON.parse()
+* - Suppression de l'id de l'objet car généré automatiquement par notre bdd
+* - Création d'un objet sauce
+* - Récupération de l'URL complète de l'image
+* - Sauvegarde de la sauce
+ * @param {Object} req - Express Request object
+ * @param {Object} res - Express Response Object
+ * @param {Function} next - Express next middleware function
+ * @return {Undefined}
+ */
 exports.createSauce = (req, res, next) => {
     const sauceObject = JSON.parse(req.body.sauce);
     delete sauceObject._id;
