@@ -1,3 +1,4 @@
+// Importation de Multer qui permet de gérer les fichiers entrants dans les requêtes HTTP
 const multer = require('multer');
 
 const MIME_TYPES = {
@@ -7,6 +8,8 @@ const MIME_TYPES = {
     'image/webp': 'webp'
 };
 
+// On configure le chemin et le nom de fichier pour les fichiers entrants
+// On renomme et on enregistre l'image dans le dossier "Images"
 const storage = multer.diskStorage({
    destination: (req, file, callback) => {
        callback(null, 'images')

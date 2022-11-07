@@ -6,6 +6,7 @@ const userSchema = mongoose.Schema({
     password: { type: String, required: true}
 });
 
+// Empêche deux utilisateurs d'avoir la même adresse email
 userSchema.plugin(uniqueValidator);
 
 module.exports = mongoose.model('user', userSchema);

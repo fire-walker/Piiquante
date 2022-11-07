@@ -1,6 +1,12 @@
+// Importation de jsonwebtoken qui permet de vérifier les tokens d'authentification
 const jwt = require('jsonwebtoken');
+
 require('dotenv').config();
 
+// Extraction du token du header authorization et utilisation de split pour tout récupérer après l'espace du header
+// Décodage du token avec verify de jwt
+// Extraction de l'id utilisateur et comparaison à celui extrait du token
+// Si la requête contient un userId, comparaison avec celui extrait du token. S'il ne sont pas identiques on renvoie une erreur.
 module.exports = (req, res, next) => {
     try {
         const token = req.headers.authorization.split(' ')[1];
