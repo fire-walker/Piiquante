@@ -31,7 +31,7 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 
-// Gère la ressource "images" de manière statique à chaque fois qu'elle reçoit une requête vers la route "/images"
+// Gère la ressource "images" de manière statique
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
 // Enregistrement des routes sauces et auth

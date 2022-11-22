@@ -13,10 +13,6 @@ require('dotenv').config();
 const User = require('../models/user');
 
 // Signup pour enregistrer le nouvel utilisateur dans la base de données
-// Chiffrage de l'email avant de l'envoyer en base de données
-// Hash du password avant de l'envoyer dans la base de données
-// Salt = 10, combien de fois sera exécuté l'algorithme de hashage
-// On crée ensuite notre utilisateur et on l'enregistre dans notre bdd
 exports.signup = (req, res, next) => {
     const cryptoJsEmail = cryptojs.HmacSHA256(req.body.email, process.env.CRYPTOJS_SECRET_KEY).toString();
     bcrypt.hash(req.body.password, 10)
@@ -35,9 +31,6 @@ exports.signup = (req, res, next) => {
 
 
 // Login pour récupérer l'utilisateur déjà enregistré dans la base de données
-// On recherche si le mail existe
-// S'il existe on compare le mot de passe entré et le hash de la base de données
-// Si les informations d’identification sont valides, nous renvoyons une réponse 200 contenant l’ID utilisateur et un token
 exports.login = (req, res, next) => {
     const cryptoJsEmail = cryptojs.HmacSHA256(req.body.email, process.env.CRYPTOJS_SECRET_KEY).toString();
     User.findOne({ email: cryptoJsEmail })
